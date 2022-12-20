@@ -1,16 +1,4 @@
 
-<p align="center">
-  <a href="https://ko-fi.com/G2G311PPB"><img src="https://www.ko-fi.com/img/githubbutton_sm.svg" alt="ko-fi"></a>
-</p>
-
-* [About ULEARN](#about-ulearn)
-* [Key Features](#about-ulearn)
-* [Demo & Credentials](#about-ulearn)
-* [Access ReactJS Page](#access-reactjs-page)
-* [Installation](#about-ulearn)
-* [Support](#about-ulearn)
-* [License](#about-ulearn)
-
 ## About ULEARN
 
 <a href="https://www.ulearnpro.com">ULEARN</a> is an impressive LMS script which comprises of all the basic features that needed for online learning. This package includes responsive frontend website, instructor/admin dashboard with a backend template. Admin can manage every aspect of the system, while the instructors could create creative courses through an interactive curriculum with various types of course files such as audio, video, document and text.
