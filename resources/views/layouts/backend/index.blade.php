@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <meta name="_token" content="{!! csrf_token() !!}"/>
 
-  <title>ULEARN</title>
+  <title>BIT-LEARN</title>
 
   <link rel="apple-touch-icon" href="{{ asset('backend/assets/images/apple-touch-icon.png') }}">
   <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico ') }}">
@@ -61,8 +61,8 @@
         <i class="icon wb-more-horizontal" aria-hidden="true"></i>
       </button>
       <div class="navbar-brand navbar-brand-center">
-        <img class="navbar-brand-logo" src="{{ asset('backend/assets/images/b_logo.png') }}" title="ULEARN">
-        <span class="navbar-brand-text hidden-xs-down"> ULEARN</span>
+        <img class="navbar-brand-logo" src="{{ asset('backend/assets/images/b_logo.png') }}" title="BIT-LEARN">
+        <span class="navbar-brand-text hidden-xs-down"> BIT-LEARN</span>
       </div>
       <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-search"
         data-toggle="collapse">
