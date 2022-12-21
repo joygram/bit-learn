@@ -62,7 +62,7 @@
       </button>
       <div class="navbar-brand navbar-brand-center">
         <img class="navbar-brand-logo" src="{{ asset('backend/assets/images/b_logo.png') }}" title="BIT-LEARN">
-        <span class="navbar-brand-text hidden-xs-down"> BIT-LEARN</span>
+        <span class="navbar-brand-text hidden-xs-down">BIT-LEARN</span>
       </div>
       <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-search"
         data-toggle="collapse">
