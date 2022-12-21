@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '3736a6e398095374d7d8f5db3cde4eef7dcec1f0',
         'name' => 'ulearnpro/ulearn',
         'dev' => true,
     ),
@@ -20,12 +20,12 @@
             'dev_requirement' => true,
         ),
         'chumper/zipper' => array(
-            'pretty_version' => 'v1.0.2',
-            'version' => '1.0.2.0',
+            'pretty_version' => 'v1.0.3',
+            'version' => '1.0.3.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../chumper/zipper',
             'aliases' => array(),
-            'reference' => '6a1733c34d67c3952b8439afb36ad4ea5c3ceacb',
+            'reference' => 'd15207e010f8fe1bdd341376bd86d599c4166423',
             'dev_requirement' => false,
         ),
         'clue/stream-filter' => array(
@@ -1320,12 +1320,12 @@
             'dev_requirement' => false,
         ),
         'ulearnpro/ulearn' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '3736a6e398095374d7d8f5db3cde4eef7dcec1f0',
             'dev_requirement' => false,
         ),
         'vlucas/phpdotenv' => array(

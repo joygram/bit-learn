@@ -1,13 +1,13 @@
 RewriteEngine On
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule ^(.*)$ http://%{HTTP_HOST}/bit-learn/$1 [R=301,L]
 
 #Enable if https needed
 #RewriteCond %{HTTPS} !=on
 #RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
 
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/$ /$1 [L,R=301]
+RewriteRule ^(.*)/$ /bit-learn/$1 [L,R=301]
 
 RewriteCond %{REQUEST_URI} !(\.css|\.otf|\.eot|\.ttf|\.woff|\.woff2|\.js|\.png|\.jpeg|\.jpg|\.gif|robots\.txt)$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-d
