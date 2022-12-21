@@ -8,19 +8,20 @@
     "packages": [
         {
             "name": "chumper/zipper",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Chumper/Zipper.git",
-                "reference": "6a1733c34d67c3952b8439afb36ad4ea5c3ceacb"
+                "reference": "d15207e010f8fe1bdd341376bd86d599c4166423"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Chumper/Zipper/zipball/6a1733c34d67c3952b8439afb36ad4ea5c3ceacb",
-                "reference": "6a1733c34d67c3952b8439afb36ad4ea5c3ceacb",
+                "url": "https://api.github.com/repos/Chumper/Zipper/zipball/d15207e010f8fe1bdd341376bd86d599c4166423",
+                "reference": "d15207e010f8fe1bdd341376bd86d599c4166423",
                 "shasum": ""
             },
             "require": {
+                "ext-zip": "*",
                 "illuminate/filesystem": "^5.0",
                 "illuminate/support": "^5.0",
                 "php": ">=5.6.0"
@@ -66,10 +67,10 @@
             ],
             "support": {
                 "issues": "https://github.com/Chumper/Zipper/issues",
-                "source": "https://github.com/Chumper/Zipper/tree/master"
+                "source": "https://github.com/Chumper/Zipper/tree/v1.0.3"
             },
             "abandoned": true,
-            "time": "2017-07-17T08:05:10+00:00"
+            "time": "2020-02-25T11:57:40+00:00"
         },
         {
             "name": "clue/stream-filter",

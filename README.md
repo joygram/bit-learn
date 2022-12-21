@@ -94,5 +94,7 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-composer
 ```
 # .env 
 
+리라이트룰 정리 
+https://bellsilver7.tistory.com/entry/%EC%BD%94%EB%93%9C%EC%9D%B4%EA%B7%B8%EB%82%98%EC%9D%B4%ED%84%B0-URL%EC%97%90%EC%84%9C-indexphp-%EC%83%9D%EB%9E%B5%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
 ```
 

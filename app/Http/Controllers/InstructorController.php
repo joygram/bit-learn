@@ -22,6 +22,7 @@ use URL;
 use Session;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactInstructor;
+use Illuminate\Support\Facades\Log;
 
 class InstructorController extends Controller
 {
@@ -38,7 +39,6 @@ class InstructorController extends Controller
     public function instructorList()
     {
         $paginate_count = 8;
-        
         $instructors = DB::table('instructors')->groupBy('instructors.id')->paginate($paginate_count);
         return view('site.instructors', compact('instructors'));
         
@@ -53,7 +53,14 @@ class InstructorController extends Controller
 
     public function dashboard(Request $request)
     {
-        $instructor_id = \Auth::user()->instructor->id;
+		$user = \Auth::user();
+		Log::info("--- user: {$user} [{$user->instructor}]");
+		if ($user->instructor == null) 
+		{
+			return $this->becomeInstructorFromUser();
+		}
+        $instructor_id = $user->instructor->id;
+		
         $courses = DB::table('courses')
                         ->select('courses.*', 'categories.name as category_name')
                         ->leftJoin('categories', 'categories.id', '=', 'courses.category_id')
@@ -69,6 +76,46 @@ class InstructorController extends Controller
         Mail::to($instructor_email)->send(new ContactInstructor($request));
         return $this->return_output('flash', 'success', 'Thanks for your message, will contact you shortly', 'back', '200');
     }
+
+	public function becomeInstructorFromUser()
+    {
+        if(!\Auth::check()){
+            return $this->return_output('flash', 'error', 'Please login to become an Instructor', 'back', '422');
+        }
+
+        $instructor = new Instructor();
+
+		$user = \Auth::user();
+        $instructor->user_id = $user->id;
+        $instructor->first_name = $user->first_name;
+        $instructor->last_name = $user->last_name;
+        $instructor->contact_email = $user->email;
+
+        $first_name = $user->first_name;
+        $last_name = $user->last_name;
+
+        //create slug only while add
+        $slug = $first_name.'-'.$last_name;
+        $slug = str_slug($slug, '-');
+
+        $results = DB::select(DB::raw("SELECT count(*) as total from instructors where instructor_slug REGEXP '^{$slug}(-[0-9]+)?$' "));
+
+        $finalSlug = ($results['0']->total > 0) ? "{$slug}-{$results['0']->total}" : $slug;
+        $instructor->instructor_slug = $finalSlug;
+
+        $instructor->telephone = '';
+        $instructor->paypal_id = '';
+        $instructor->biography = '';
+        $instructor->save();
+
+        $user = User::find(\Auth::user()->id);
+
+        $role = Role::where('name', 'instructor')->first();
+        $user->roles()->attach($role);
+        
+        return redirect()->route('instructor.dashboard') ;
+    }
+
     public function becomeInstructor(Request $request)
     {
         if(!\Auth::check()){
