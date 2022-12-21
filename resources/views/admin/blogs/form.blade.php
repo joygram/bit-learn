@@ -102,9 +102,8 @@ figure figcaption {
       <div class="row">
             <div class="form-group col-md-7">
                 <label class="form-control-label">Description</label>
-                <textarea name="description">
-                    {{ $blog->description }}
-                </textarea>
+				<!-- editor 내용 -->
+                <textarea id="description" name="description">{{ $blog->description }}</textarea>
             </div>
 
             <div class="form-group col-md-5">
@@ -266,14 +265,14 @@ figure figcaption {
 
             
         });
-
-        tinymce.init({ 
-            selector:'textarea',
-            menubar:false,
-            statusbar: false,
-            height: 280,
-            content_style: "#tinymce p{color:#76838f;}"
-        });
+		// init editor 
+        // tinymce.init({ 
+        //     selector:'textarea',
+        //     menubar:false,
+        //     statusbar: false,
+        //     height: 280,
+        //     content_style: "#tinymce p{color:#76838f;}"
+        // });
 
         $("#blogForm").validate({
             rules: {
@@ -287,6 +286,9 @@ figure figcaption {
                 }
             }
         });
-    });
+
+		// init ckeditor by jogyram 2022/12/21
+		initJoyEditor();
+    }); //ondocument.ready
 </script>
 @endsection

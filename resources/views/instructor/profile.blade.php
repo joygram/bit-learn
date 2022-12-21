@@ -191,9 +191,8 @@ figure figcaption {
 
 	        <div class="form-group col-md-8">
 	            <label class="form-control-label">Biography <span class="required">*</span></label>
-	            <textarea name="biography">
-	                {{ $instructor->biography }}
-	            </textarea>
+				<!-- add editor id by joygram 2022/12/21 -->
+	            <textarea id="biography" name="biography">{{ $instructor->biography }}</textarea>
                 @if ($errors->has('biography'))
                     <label class="error" for="biography">{{ $errors->first('biography') }}</label>
                 @endif
@@ -342,13 +341,16 @@ figure figcaption {
             
         });
 
-        tinymce.init({ 
-            selector:'textarea',
-            menubar:false,
-            statusbar: false,
-            height: 280,
-            content_style: "#tinymce p{color:#76838f;}"
-        });
+		//change editor by joygram 2022/12/21
+		initJoyEditor("biography"); 
+
+        // tinymce.init({ 
+        //     selector:'textarea',
+        //     menubar:false,
+        //     statusbar: false,
+        //     height: 280,
+        //     content_style: "#tinymce p{color:#76838f;}"
+        // });
 
        
         $("#profileForm").validate({

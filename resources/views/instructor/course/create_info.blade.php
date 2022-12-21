@@ -110,9 +110,7 @@
 
         <div class="form-group col-md-12">
             <label class="form-control-label">Overview</label>
-            <textarea name="overview">
-                {{ $course->overview }}
-            </textarea>
+            <textarea id="overview" name="overview">{{ $course->overview }}</textarea>
         </div>
 
       </div>
@@ -139,12 +137,15 @@
 
     $(document).ready(function()
     { 
-        tinymce.init({ 
-            selector:'textarea',
-            menubar:false,
-            statusbar: false,
-            content_style: "#tinymce p{color:#76838f;}"
-        });
+		//change editor by joygram 2022/12/21
+		initJoyEditor("overview"); 
+        
+		// tinymce.init({ 
+        //     selector:'textarea',
+        //     menubar:false,
+        //     statusbar: false,
+        //     content_style: "#tinymce p{color:#76838f;}"
+        // });
 
         $(".tagsinput").tagsinput();
 

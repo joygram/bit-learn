@@ -18,7 +18,7 @@
         <div class="row">
             <div class="form-group col-md-12">
                 <label class="form-control-label">Content</label>
-                <textarea name="content">{{ isset($config['content']) ? $config['content'] : '' }}</textarea>
+                <textarea id="content" name="content">{{ isset($config['content']) ? $config['content'] : '' }}</textarea>
             </div>
         </div>
 
@@ -44,15 +44,17 @@
 <script type="text/javascript">
     $(document).ready(function()
     { 
-        tinymce.init({ 
-          selector: "textarea",  // change this value according to your HTML
-          plugins: "code",
-          toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | code",
-          menubar: false,
-          height: 500,
-          content_style: "#tinymce {color:#76838f;}",
-          extended_valid_elements: 'i[class]'
-        });
+		//change editor by joygram 2022/12/21
+		initJoyEditor('content');
+        // tinymce.init({ 
+        //   selector: "textarea",  // change this value according to your HTML
+        //   plugins: "code",
+        //   toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | code",
+        //   menubar: false,
+        //   height: 500,
+        //   content_style: "#tinymce {color:#76838f;}",
+        //   extended_valid_elements: 'i[class]'
+        // });
     });
 </script>
 

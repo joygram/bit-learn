@@ -161,14 +161,17 @@
 <script type="text/javascript">
     $(document).ready(function()
     { 
-        tinymce.init({ 
-          selector: "textarea",  // change this value according to your HTML
-          plugins: "code",
-          toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | code",
-          menubar: false,
-          height: 500,
-          content_style: "#tinymce {color:#76838f;}"
-        });
+		//change editor by joygram 2022/12/21
+		//initJoyEditor(); 
+
+        // tinymce.init({ 
+        //   selector: "textarea",  // change this value according to your HTML
+        //   plugins: "code",
+        //   toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | code",
+        //   menubar: false,
+        //   height: 500,
+        //   content_style: "#tinymce {color:#76838f;}"
+        // });
 
         
         $('.item-img').on('change', function () {

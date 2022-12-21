@@ -70,13 +70,16 @@
 <script type="text/javascript">
     $(document).ready(function()
     { 
-        tinymce.init({ 
-            selector:'textarea',
-            menubar:false,
-            statusbar: false,
-            height: 280,
-            content_style: "#tinymce p{color:#76838f;}"
-        });
+		//change editor by joygram 2022/12/21
+		//initJoyEditor(); 
+
+        // tinymce.init({ 
+        //     selector:'textarea',
+        //     menubar:false,
+        //     statusbar: false,
+        //     height: 280,
+        //     content_style: "#tinymce p{color:#76838f;}"
+        // });
     });
 </script>
 
