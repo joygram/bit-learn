@@ -1,5 +1,16 @@
 @extends('layouts.frontend.index')
+
+@section('javascript')
+<!-- markdown preview : by joygram 2022/12/22 -->
+<script type="text/javascript">
+    $(document).ready(function() { 
+		initJoyEditor('overview', true);
+	});
+</script>
+@endsection
+
 @section('content')
+
 <!-- content start -->
 <div class="container-fluid p-0 home-content">
     <!-- banner start -->
@@ -79,7 +90,7 @@
 
                     @if($course->overview)
                         <h4 class="mt-4">Course Overview</h4>
-                        {!! $course->overview !!}
+                        <div id=overview>{!! $course->overview !!}</div>
                     @endif
                     
                     @if($is_curriculum)

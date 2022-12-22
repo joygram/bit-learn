@@ -206,7 +206,9 @@
     <!-- Toastr -->
     <script src="{{ asset('backend/vendor/toastr/toastr.min599c.js?v4.0.2') }}"></script>
 
-    
+    <!-- editor change by joygram 2022/12/21 -->
+  	<script src="{{ asset('backend/editor/ckeditor.js') }}"></script>
+  	<script src="{{ asset('backend/editor/joyeditor.js') }}"></script>
 
     <script>
     $(window).on("load", function (e){

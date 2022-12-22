@@ -930,6 +930,7 @@ $(document).ready(function(){
       });
     }
   });
+  
   $('.curriculam_page').addClass('active');
 
   $( ".quizquestions" ).sortable({
