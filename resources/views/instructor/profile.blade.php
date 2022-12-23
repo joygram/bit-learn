@@ -171,7 +171,7 @@ figure figcaption {
         <div class="row">
         	
     		<div class="form-group col-md-4">
-	            <label class="form-control-label">Course Image</label>
+	            <label class="form-control-label">{!! Lang::get('curriculum.course_image')!!}</label>
 	            
 	            <label class="cabinet center-block">
 	                <figure class="course-image-container">

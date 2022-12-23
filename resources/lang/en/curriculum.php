@@ -1291,5 +1291,7 @@ return array(
  "course_submit_msg_waiting_approval"			=> "Your Course is uploaded, require approval please keep patience.",  
  "course_submit_msg_published"			=> "Course Has been Published.",  
  "course_submit_error_msg"			=> "Oops! It looks like you may have clicked this button a bit too soon. In order to publish your course:.",  
+ "add_course" => "Add Course",
+"course_image" => "Course Image",
  );
 ?>
