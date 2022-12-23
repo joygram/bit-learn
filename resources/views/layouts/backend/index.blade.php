@@ -132,7 +132,7 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="site-footer-legal">© {{ date('Y') }} <a href="javascript:void(0)">ULEARN</a></div>
+    <div class="site-footer-legal">© {{ date('Y') }} <a href="javascript:void(0)">BIT-LEARN</a></div>
   </footer>
   <!-- Core  -->
   <script src="{{ asset('backend/vendor/babel-external-helpers/babel-external-helpers599c.js?v4.0.2') }}"></script>

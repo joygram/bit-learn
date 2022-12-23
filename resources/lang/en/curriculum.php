@@ -1293,5 +1293,7 @@ return array(
  "course_submit_error_msg"			=> "Oops! It looks like you may have clicked this button a bit too soon. In order to publish your course:.",  
  "add_course" => "Add Course",
 "course_image" => "Course Image",
+ "default_section_title" => "Start Here",
+
  );
 ?>
