@@ -20,6 +20,8 @@ use URL;
 use App\Models\CourseVideos;
 use App\Models\CourseFiles;
 use Session;
+use Illuminate\Support\Facades\Log;
+
 
 
 class CourseController extends Controller
@@ -703,7 +705,11 @@ class CourseController extends Controller
             $file_name = str_slug($file_name, "-");
             // ffmpeg.exe file path
             $file_name = str_slug($file_name, "-");
-if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = base_path().'\resources\assets\ffmpeg\ffmpeg_win\ffmpeg';            } else {                $ffmpeg_path = base_path().'/resources/assets/ffmpeg/ffmpeg_lin/ffmpeg.exe';            }
+			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               
+				$ffmpeg_path = base_path().'\resources\assets\ffmpeg\ffmpeg_win\ffmpeg';            
+			} else {
+				$ffmpeg_path = base_path().'/resources/assets/ffmpeg/ffmpeg_lin/ffmpeg.exe';            
+			}
 
             $ffmpeg = new VideoHelpers($ffmpeg_path , $file_tmp_name, $file_name);
             $ffmpeg->convertImages();
@@ -764,13 +770,14 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
         $file_name = explode('.',$audio->getClientOriginalName());
         $file_name = $file_name[0].'_'.time().rand(4,9999);
         $file_type = $audio->getClientOriginalExtension();
-            $file_title = $audio->getClientOriginalName();
-            $file_size = $audio->getSize();
+		$file_title = $audio->getClientOriginalName();
+		$file_size = $audio->getSize();
         $file_title = str_slug($file_title, "-");
         $file_name = str_slug($file_name, "-");
-           if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') 
-            {               
-              $ffmpeg_path = base_path().'\resources\assets\ffmpeg\ffmpeg_win\ffmpeg';          } else {                $ffmpeg_path = base_path().'/resources/assets/ffmpeg/ffmpeg_lin/ffmpeg.exe';        
+           if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               
+				$ffmpeg_path = base_path().'\resources\assets\ffmpeg\ffmpeg_win\ffmpeg';          
+			} else {
+				$ffmpeg_path = base_path().'/resources/assets/ffmpeg/ffmpeg_lin/ffmpeg.exe';        
             }
             
             $ffmpeg = new VideoHelpers($ffmpeg_path , $file_tmp_name, $file_name);
@@ -817,31 +824,43 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
         exit;
     }
         
+	//저장 
     public function postLecturePresentationSave($lid,Request $request)
     {
         $course_id = $request->input('course_id');
         $document = $request->file('lecturepre');
         $file = array('document' => $document);
-        $rules = array('document' => 'required|mimes:pdf');
+		//파일타입추가 
+        $rules = array('file' => 'required|file|mimes:pdf,Rmd,rmd,qmd');
         $validator = Validator::make($file, $rules);
 
         if( $validator->fails() )
         {
+	   		Log::error("post --- validation failed");
+
             $return_data[] = array(
                 'status'=>false,
+				'message'=> 'validator failed',
             );
         } else {
             $pdftext = file_get_contents($document);
-            $pdfPages = preg_match_all("/\/Page\W/", $pdftext, $dummy);
             $file_tmp_name = $document->getPathName();
             $file_name = explode('.',$document->getClientOriginalName());
             $file_name = $file_name[0].'_'.time().rand(4,9999);
             $file_type = $document->getClientOriginalExtension();
             $file_title = $document->getClientOriginalName();
             $file_size = $document->getSize();
+
+	   		Log::info($file_name, $file_type, $file_size, $file_title);
+
+			$pdfPages = 1;
+			if ($file_type =='pdf') {
+            	$pdfPages = preg_match_all("/\/Page\W/", $pdftext, $dummy);
+			}
             
             $request->file('lecturepre')->storeAs('course/'.$course_id, $file_name.'.'.$file_type);
        
+
             $courseFiles = new CourseFiles;
             $courseFiles->file_name = $file_name;
             $courseFiles->file_title = $file_title;
@@ -885,24 +904,33 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
         $course_id = $request->input('course_id');
         $document = $request->file('lecturedoc');
         $file = array('document' => $document);
-        $rules = array('document' => 'required|mimes:pdf');
+		//파일 확장자 추가 Rmd
+        $rules = array('file' => 'required|file|mimes:pdf,Rmd,rmd,qmd');
         $validator = Validator::make($file, $rules);
 
         if( $validator->fails() )
         {
+	   		Log::error("--- validation failed");
+
             $return_data[] = array(
                 'status'=>false,
+				'message'=>'validator failed',
             );
         } else {
             $pdftext = file_get_contents($document);
-            $pdfPages = preg_match_all("/\/Page\W/", $pdftext, $dummy);
             $file_tmp_name = $document->getPathName();
             $file_name = explode('.',$document->getClientOriginalName());
             $file_name = $file_name[0].'_'.time().rand(4,9999);
             $file_type = $document->getClientOriginalExtension();
             $file_title = $document->getClientOriginalName();
             $file_size = $document->getSize();
-            
+			$pdfPages = 1;
+			if ($file_type == 'pdf') {
+            	$pdfPages = preg_match_all("/\/Page\W/", $pdftext, $dummy);
+			}
+			Log::error($file_name);
+	   		Log::info($file_name, $file_type, $file_size, $file_title);
+
             $request->file('lecturedoc')->storeAs('course/'.$course_id, $file_name.'.'.$file_type);
        
             $courseFiles = new CourseFiles;
@@ -954,13 +982,6 @@ if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {               $ffmpeg_path = b
             $file_type = $document->getClientOriginalExtension();
             $file_title = $document->getClientOriginalName();
             $file_size = $document->getSize();
-            
-            if($file_type == 'pdf'){
-                $pdftext = file_get_contents($document);
-                $pdfPages = preg_match_all("/\/Page\W/", $pdftext, $dummy);
-            } else {
-                $pdfPages = '';
-            }
             
             $request->file('lectureres')->storeAs('course/'.$course_id, $file_name.'.'.$file_type);
        

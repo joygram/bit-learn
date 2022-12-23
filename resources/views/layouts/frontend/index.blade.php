@@ -11,12 +11,12 @@
         <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('frontend/css/fancybox.css') }}">
-        
+
         <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.css') }}">
 
         <link rel="stylesheet" href="{{ asset('backend/fonts/web-icons/web-icons.min599c.css?v4.0.2') }}">
         <link rel="stylesheet" href="{{ asset('backend/vendor/toastr/toastr.min599c.css?v4.0.2') }}">
-        
+
     </head>
     <body>
     <div class="se-pre-con"></div>
@@ -31,9 +31,9 @@
             <div class="col-md-3 col-lg-6 col-xl-6 d-none d-md-block">
                 <div class="dropdown float-left" >
                   <span id="dropdownMenuButton" data-toggle="dropdown">Categories &nbsp;<i class="fa fa-caret-down"></i></span>
-                    <?php 
-                        $categories = SiteHelpers::active_categories();
-                    ?>
+                    <?php
+$categories = SiteHelpers::active_categories();
+?>
                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     @foreach ($categories as $category)
                         <a class="dropdown-item" href="{{ route('course.list','category_id[]='.$category->id) }}">
@@ -57,9 +57,9 @@
                 @else
                 <div class="dropdown float-xl-left float-sm-right float-right">
                   <span id="dropdownMenuButtonRight" data-toggle="dropdown">{{ Auth::user()->first_name }} &nbsp;<i class="fa fa-caret-down"></i></span>
-                    
+
                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButtonRight">
-                    
+
                     @if(Auth::user()->hasRole('instructor'))
                     <a class="dropdown-item" href="{{ route('instructor.dashboard') }}" >
                         <i class="fa fa-sign-out-alt"></i> Instructor
@@ -73,7 +73,7 @@
                     <a class="dropdown-item" href="{{ route('logOut') }}" >
                         <i class="fa fa-sign-out-alt"></i> Logout
                     </a>
-                    
+
                   </div>
                 </div>
 
@@ -126,7 +126,7 @@
                             <li><a href="{{ route('course.list','category_id[]='.$category->id) }}">{{ $category->name}}</a></li>
                         @endif
                     @endforeach
-                    
+
                 </ul>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 text-center mt-4">
@@ -148,7 +148,7 @@
             <h5 class="col-12 modal-title text-center bi-header-seperator-head">Become an Instructor</h5>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-           
+
         <div class="becomeInstructorForm">
            <form id="becomeInstructorForm" class="form-horizontal" method="POST" action="{{ route('become.instructor') }}">
             {{ csrf_field() }}
@@ -202,13 +202,15 @@
     <script src="{{ asset('frontend/js/fancybox.min.js') }}"></script>
     <script src="{{ asset('frontend/js/modernizr.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.validate.js') }}"></script>
-    
+
     <!-- Toastr -->
     <script src="{{ asset('backend/vendor/toastr/toastr.min599c.js?v4.0.2') }}"></script>
 
-    <!-- editor change by joygram 2022/12/21 -->
-  	<script src="{{ asset('backend/editor/ckeditor.js') }}"></script>
-  	<script src="{{ asset('backend/editor/joyeditor.js') }}"></script>
+	<!-- editor change by joygram 2022/12/21 -->
+	<script src="{{ asset('backend/editor/ckeditor.js') }}"></script>
+	<script src="{{ asset('backend/editor/joyeditor.js') }}"></script>
+	 <script src="{{ asset('backend/webix/codebase/webix.js') }}"></script>
+
 
     <script>
     $(window).on("load", function (e){
@@ -218,13 +220,13 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function()
-        {   
+        {
             /* Delete record */
             $('.delete-record').click(function(event)
             {
                 var url = $(this).attr('href');
                 event.preventDefault();
-                
+
                 if(confirm('Are you sure want to delete this record?'))
                 {
                     window.location.href = url;
@@ -253,7 +255,7 @@
             $('.mobile-nav').click(function()
             {
                 $('#sidebar').toggleClass('active');
-                
+
                 $(this).toggleClass('fa-bars');
                 $(this).toggleClass('fa-times');
             });

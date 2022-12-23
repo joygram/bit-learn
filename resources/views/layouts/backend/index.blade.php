@@ -192,6 +192,7 @@
 <!-- editor change by joygram 2022/12/21 -->
   <script src="{{ asset('backend/editor/ckeditor.js') }}"></script>
   <script src="{{ asset('backend/editor/joyeditor.js') }}"></script>
+  <script src="{{ asset('backend/webix/codebase/webix.js') }}"></script>
   
    <script>
    $.ajaxSetup({

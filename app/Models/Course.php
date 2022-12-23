@@ -149,7 +149,7 @@ class Course extends Model
 		
 		if($sections->isEmpty()){	// IF EMPTY, CREATE DEFAULT SECTION AND LECTURE
 			$data['course_id'] = $id;
-			$data['title'] =  Lang::get('curriculum.default_section_title');//'Start Here';
+			$data['title'] =  'Start Here'; //Lang::get('curriculum.default_section_title');//
 			$data['sort_order'] = '1';
 			
 			$sectionId = $this->insertSectionRow($data , '');

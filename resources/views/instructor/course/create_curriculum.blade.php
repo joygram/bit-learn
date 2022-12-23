@@ -1162,40 +1162,33 @@ $(document).ready(function(){
 {!! $presentation->file_title !!} ({!! ulearnHelpers::HumanFileSize($presentation->file_size) !!}) \
 <!--div class="goright cpredelete" data-lid="'+msg+'" data-rid="{!! $presentation->id !!}">\
 <i class="goright fa fa-trash-o"></i></div-->\
-</div> \
-@endforeach \
-@else \
-<center><em>Library is empty</em></center> \
-@endif \
 </div>\
-<div class="cdocfiles" id="cdocfiles'+msg+'"> \
-@if(isset($userdocuments) && !empty($userdocuments)) \
-@foreach($userdocuments as $document) \
+@endforeach\
+@else\
+<center><em>Library is empty</em></center>\
+@endif\
+</div>\
+<div class="cdocfiles" id="cdocfiles'+msg+'">\
+@if(isset($userdocuments) && !empty($userdocuments))\
+@foreach($userdocuments as $document)\
 <div class="cclickable updatelibcontent" id="cdocs'+msg+'_{!! $document->id !!}" data-type="file" data-alt="2" data-lib="{!! $document->id !!}" data-lid="'+msg+'">\
-<i class="fa fa-file-text-o"></i> \
-{!! $document->file_title !!} ({!! ulearnHelpers::HumanFileSize($document->file_size) !!}) \
-<!--div class="goright cdocdelete" data-lid="'+msg+'" data-rid="{!! $document->id !!}">\
-<i class="goright fa fa-trash-o"></i></div--></div> \
-@endforeach \
-@else \
-<center><em>Library is empty</em></center> \
-@endif \
+<i class="fa fa-file-text-o"></i>{!! $document->file_title !!} ({!! ulearnHelpers::HumanFileSize($document->file_size) !!}) \
 </div> \
-<div class="cresfiles" id="cresfiles'+msg+'"> \
-@if(isset($userresources) && !empty($userresources)) \
-@foreach($userresources as $resource) \
-<div class="cclickable updaterescontent" id="cresources'+msg+'_{!! $resource->id !!}" data-lib="{!! $resource->id !!}" data-lid="'+msg+'">\
+@endforeach\
+@else\
+<center><em>Library is empty</em></center> \
+@endif\
+</div> \
+<div class="cresfiles" id="cresfiles'+msg+'">\
+@if(isset($userresources) && !empty($userresources)) @foreach($userresources as $resource)<div class="cclickable updaterescontent" id="cresources'+msg+'_{!! $resource->id !!}" data-lib="{!! $resource->id !!}" data-lid="'+msg+'" >\
 <i class="fa fa-file-text"></i>\ 
 {!! $resource->file_title !!} ({!! ulearnHelpers::HumanFileSize($resource->file_size) !!}) \
-<!--div class="goright cresdelete" data-lid="'+msg+'" data-rid="{!! $resource->id !!}">\
-<i class="goright fa fa-trash-o"></i></div-->\
 </div> \
-@endforeach \
-@else \
+@endforeach\
+@else\
 <center><em>Library is empty</em></center>\
-@endif \
-</div> \
-</div> \
+@endif\
+</div></div>\
 <div id="externalres'+msg+'" class="cctab-content"> \
 <div class="form-group"> \
 <label for="label" class="col-xs-12">\
@@ -2385,7 +2378,7 @@ function filesuploadajax(){
 
   $('.docfiles').fileupload({
     autoUpload: true,
-    acceptFileTypes: /(\.|\/)(pdf)$/i,
+    acceptFileTypes: /(\.|\/)(pdf|Rmd|Qmd)$/i,
     maxFileSize: 1024000000, // 1 GB
     progress: function (e, data) {
       // console.log(data);
