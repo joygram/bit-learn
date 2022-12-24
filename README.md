@@ -44,12 +44,17 @@ php artisan db:seed
 ## Install
 
 ```
+composer self
 apt-get install php7.1
 apt-get install php7.1-sqlite
 apt-get install php7.1-curl 
 apt-get install php7.1-xml
+apt-get install php7.1-mbstring 
 #install composer for php7.1
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-composer-on-ubuntu-22-04
+
+a2enmod php7.1
+a2dismod php8.1
 ```
 
 
